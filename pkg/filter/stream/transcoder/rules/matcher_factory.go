@@ -15,25 +15,19 @@
  * limitations under the License.
  */
 
-package boltv2
+package rules
 
-import (
-	"mosn.io/mosn/pkg/types"
-)
+func init() {
+	MustRegister(&simpleMatcher{})
+}
 
-// boltv2 constants
-const (
-	ProtocolName    types.ProtocolName = "boltv2" // protocol
-	ProtocolCode    byte               = 2
-	ProtocolVersion byte               = 1 // see details in: https://github.com/sofastack/sofa-bolt/blob/master/src/main/java/com/alipay/remoting/rpc/protocol/RpcCommandEncoderV2.java
+// macther factory
+var transferMatcher TransferMatcher
 
-	RequestHeaderLen  int = 24 // protocol header fields length
-	ResponseHeaderLen int = 22
-	LessLen           int = ResponseHeaderLen // minimal length for decoding
+func MustRegister(matcher TransferMatcher) {
+	transferMatcher = matcher
+}
 
-	RequestIdIndex         = 6
-	RequestHeaderLenIndex  = 18
-	ResponseHeaderLenIndex = 16
-
-	ProtocolVersion1 byte = 0x01 // define in https://github.com/sofastack/sofa-bolt/blob/master/src/main/java/com/alipay/remoting/rpc/protocol/RpcProtocolV2.java
-)
+func GetMatcher() TransferMatcher {
+	return transferMatcher
+}
