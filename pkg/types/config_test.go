@@ -33,7 +33,7 @@ func TestInitDefaultPath(t *testing.T) {
 	// test
 	InitDefaultPath(testConfigPath)
 	// verify
-	// if config is /tmp/mosn_defaulta/conf/config.json
+	// if config is /tmp/mosn_defaulta/conf/client_config.json
 	// the log should in /tmp/mosn_default/logs/*
 	// the others shoykd in  /tmp/mosn_default/conf*
 	if !(MosnLogBasePath == path.Join("/tmp/mosn_default", "logs") &&

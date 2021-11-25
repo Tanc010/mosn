@@ -33,8 +33,8 @@ import (
 
 	"mosn.io/mosn/pkg/log"
 	"mosn.io/mosn/pkg/protocol"
-	"mosn.io/mosn/pkg/protocol/http"
 	"mosn.io/mosn/pkg/trace"
+	"mosn.io/pkg/protocol/http"
 )
 
 const (

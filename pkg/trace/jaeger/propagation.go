@@ -17,7 +17,7 @@
 
 package jaeger
 
-import "mosn.io/mosn/pkg/protocol/http"
+import "mosn.io/pkg/protocol/http"
 
 //HTTPHeadersCarrier
 type HTTPHeadersCarrier http.RequestHeader

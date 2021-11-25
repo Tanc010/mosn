@@ -29,7 +29,7 @@ type TranscoderGoPlugin struct {
 	SoPath string `json:"so_path,omitempty"`
 }
 
-func (t *TranscoderGoPlugin) CreateTranscoder(listenerName string) {
+func (t *TranscoderGoPlugin) CreateTranscoder() {
 
 	if t.SrcPro == "" || t.DstPro == "" || t.SoPath == "" {
 		log.DefaultLogger.Errorf("[stream filter][transcoder] config could not be found, srcPro: %s,"+
@@ -37,7 +37,7 @@ func (t *TranscoderGoPlugin) CreateTranscoder(listenerName string) {
 		return
 	}
 
-	name := listenerName + "_" + t.SrcPro + "_" + t.DstPro
+	name := t.SrcPro + "_" + t.DstPro
 
 	if GetTranscoder(name) != nil {
 		return

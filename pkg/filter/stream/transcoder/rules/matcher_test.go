@@ -31,17 +31,17 @@ func TestTransferRuleConfigMatches(t *testing.T) {
 			name: "TestTransferRuleConfigMatches_match",
 			fields: fields{
 				MatcherConfig: &MatcherConfig{
-					Headers: []HeaderMatcher{
+					Headers: []Header{
 						{
 							Name:  "serviceCode",
 							Value: "dsr",
+							Regex: false,
 						},
 					},
 				},
 				RuleInfo: &RuleInfo{
 					UpstreamProtocol: "a",
 				},
-				MatchType: "simpleMatcher",
 			},
 			args: args{
 				ctx:     context.Background(),
@@ -56,17 +56,17 @@ func TestTransferRuleConfigMatches(t *testing.T) {
 			name: "TestTransferRuleConfigMatches_no_match",
 			fields: fields{
 				MatcherConfig: &MatcherConfig{
-					Headers: []HeaderMatcher{
+					Headers: []Header{
 						{
 							Name:  "serviceCode",
 							Value: "dsr",
+							Regex: false,
 						},
 					},
 				},
 				RuleInfo: &RuleInfo{
 					UpstreamProtocol: "a",
 				},
-				MatchType: "simpleMatcher",
 			},
 			args: args{
 				ctx:     context.Background(),
@@ -82,7 +82,7 @@ func TestTransferRuleConfigMatches(t *testing.T) {
 				MatcherConfig: tt.fields.MatcherConfig,
 				RuleInfo:      tt.fields.RuleInfo,
 			}
-			got, got1 := tf.Matches(tt.args.ctx, tt.args.headers, tt.fields.MatchType)
+			got, got1 := tf.Matches(tt.args.ctx, tt.args.headers)
 			if !reflect.DeepEqual(got, tt.want) {
 				t.Errorf("Matches() got = %v, want %v", got, tt.want)
 			}

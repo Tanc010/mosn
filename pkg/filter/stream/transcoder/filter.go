@@ -51,32 +51,30 @@ func newTranscodeFilter(ctx context.Context, cfg *config) *transcodeFilter {
 	}
 
 	transcoder := GetTranscoder(cfg.Type)
-	initSuccess, listenerName := initTranscodePlugin(ctx, cfg.GoPluginConfig)
+	initSuccess := initTranscodePlugin(ctx, cfg.GoPluginConfig)
 	//cgf.Type and cfg.GopluginConfig both failed to initialize transcoder
 	if !initSuccess && transcoder == nil {
 		log.Proxy.Errorf(ctx, "[stream filter][transcoder] create failed, no such transcoder type: %s", cfg.Type)
-		return nil
 	}
 
 	return &transcodeFilter{
 		ctx:          ctx,
 		cfg:          cfg,
 		transcoder:   transcoder,
-		listenerName: listenerName,
+		listenerName: mosnctx.Get(ctx, types.ContextKeyListenerName).(string),
 	}
 }
 
-func initTranscodePlugin(ctx context.Context, cfg *transcodeGoPluginConfig) (bool, string) {
+func initTranscodePlugin(ctx context.Context, cfg *transcodeGoPluginConfig) bool {
 	if cfg == nil {
-		return false, ""
+		return false
 	}
-	listenerName := mosnctx.Get(ctx, types.ContextKeyListenerName).(string)
 
 	for _, transcoder := range cfg.Transcoders {
-		transcoder.CreateTranscoder(listenerName)
+		transcoder.CreateTranscoder()
 	}
 
-	return true, listenerName
+	return true
 }
 
 // ReadPerRouteConfig makes route-level configuration override filter-level configuration
@@ -141,6 +139,9 @@ func (f *transcodeFilter) OnReceive(ctx context.Context, headers types.HeaderMap
 		}
 
 		transcoder = f.transcoder
+	} else {
+		log.Proxy.Errorf(ctx, "[stream filter][transcoder] cloud not found transcoder in filter")
+		return api.StreamFilterContinue
 	}
 
 	//if route := f.receiveHandler.Route(); route != nil {
@@ -148,6 +149,7 @@ func (f *transcodeFilter) OnReceive(ctx context.Context, headers types.HeaderMap
 	//	f.readPerRouteConfig(ctx, route.RouteRule().PerFilterConfig())
 	//}
 	// do transcoding
+
 	outHeaders, outBuf, outTrailers, err = transcoder.TranscodingRequest(ctx, headers, buf, trailers)
 
 	if err != nil {
@@ -208,6 +210,9 @@ func (f *transcodeFilter) Append(ctx context.Context, headers types.HeaderMap, b
 		}
 
 		transcoder = f.transcoder
+	} else {
+		log.Proxy.Errorf(ctx, "[stream filter][transcoder] cloud not found transcoder in filter")
+		return api.StreamFilterContinue
 	}
 
 	// do transcoding
@@ -241,7 +246,7 @@ func (f *transcodeFilter) matches(ctx context.Context, headers types.HeaderMap) 
 		return nil, false
 	}
 	for _, t := range transferRuleConfigs {
-		rule, match := t.Matches(ctx, headers, f.cfg.MatcherType)
+		rule, match := t.Matches(ctx, headers)
 		if log.DefaultLogger.GetLogLevel() >= log.DEBUG {
 			log.DefaultLogger.Debugf("[stream filter][transcoder] match %s, rule %+v", match, rule)
 		}

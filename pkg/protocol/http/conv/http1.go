@@ -26,8 +26,8 @@ import (
 	"mosn.io/mosn/pkg/variable"
 
 	"mosn.io/mosn/pkg/protocol"
-	"mosn.io/mosn/pkg/protocol/http"
 	"mosn.io/mosn/pkg/types"
+	"mosn.io/pkg/protocol/http"
 )
 
 func init() {

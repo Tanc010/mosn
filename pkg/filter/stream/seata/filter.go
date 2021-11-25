@@ -32,10 +32,10 @@ import (
 	"mosn.io/api"
 	"mosn.io/mosn/pkg/log"
 	"mosn.io/mosn/pkg/protocol"
-	mosnhttp "mosn.io/mosn/pkg/protocol/http"
 	"mosn.io/mosn/pkg/types"
 	"mosn.io/mosn/pkg/variable"
 	"mosn.io/pkg/buffer"
+	mosnhttp "mosn.io/pkg/protocol/http"
 	"mosn.io/pkg/utils"
 )
 
