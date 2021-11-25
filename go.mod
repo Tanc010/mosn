@@ -39,13 +39,13 @@ require (
 	github.com/uber/jaeger-client-go v2.25.0+incompatible
 	github.com/uber/jaeger-lib v2.4.0+incompatible // indirect
 	github.com/urfave/cli v1.22.1
-	github.com/valyala/fasthttp v0.0.0-20200605121233-ac51d598dc54
+	github.com/valyala/fasthttp v1.31.0
 	github.com/valyala/fasttemplate v1.1.0
 	github.com/wasmerio/wasmer-go v1.0.3
 	go.uber.org/atomic v1.7.0
 	go.uber.org/automaxprocs v1.3.0
-	golang.org/x/crypto v0.0.0-20201002170205-7f63de1d35b0
-	golang.org/x/net v0.0.0-20210405180319-a5a99cb37ef4
+	golang.org/x/crypto v0.0.0-20210513164829-c07d793c2f9a
+	golang.org/x/net v0.0.0-20210510120150-4163338589ed
 	golang.org/x/sys v0.0.0-20210809222454-d867a43fc93e
 	golang.org/x/tools v0.1.4
 	google.golang.org/genproto v0.0.0-20200806141610-86f49bd18e98
@@ -60,4 +60,9 @@ require (
 	vimagination.zapto.org/memio v0.0.0-20200222190306-588ebc67b97d // indirect
 )
 
-replace github.com/envoyproxy/go-control-plane => github.com/envoyproxy/go-control-plane v0.9.4
+replace (
+	github.com/envoyproxy/go-control-plane => github.com/envoyproxy/go-control-plane v0.9.4
+	github.com/rcrowley/go-metrics => github.com/rcrowley/go-metrics v0.0.0-20201227073835-cf1acfcdf475
+	github.com/valyala/fasthttp => github.com/valyala/fasthttp v1.31.0
+	mosn.io/pkg => github.com/Tanc010/pkg v0.0.0-20211125092033-47a2e5abb852
+)
