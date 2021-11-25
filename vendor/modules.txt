@@ -474,9 +474,10 @@ istio.io/gogo-genproto/googleapis/google/rpc
 # k8s.io/klog v1.0.0
 ## explicit
 k8s.io/klog
-# mosn.io/api v0.0.0-20210414070543-8a0686b03540
+# mosn.io/api v0.0.0-20210414070543-8a0686b03540 => github.com/YIDWang/api v0.0.0-20211119033852-6e898f4d8222
 ## explicit
 mosn.io/api
+mosn.io/api/extensions/transcoder
 # mosn.io/pkg v0.0.0-20210604065522-6e8f5a087814
 ## explicit
 mosn.io/pkg/buffer
@@ -488,3 +489,4 @@ mosn.io/pkg/utils
 mosn.io/proxy-wasm-go-host/common
 mosn.io/proxy-wasm-go-host/proxywasm
 # github.com/envoyproxy/go-control-plane => github.com/envoyproxy/go-control-plane v0.9.4
+# mosn.io/api => github.com/YIDWang/api v0.0.0-20211119033852-6e898f4d8222
