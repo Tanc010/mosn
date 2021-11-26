@@ -61,6 +61,7 @@ require (
 
 replace (
 	github.com/envoyproxy/go-control-plane => github.com/envoyproxy/go-control-plane v0.9.4
+	github.com/rcrowley/go-metrics => github.com/rcrowley/go-metrics v0.0.0-20201227073835-cf1acfcdf475
 	mosn.io/api => github.com/YIDWang/api v0.0.0-20211119033852-6e898f4d8222
 	mosn.io/pkg => github.com/Tanc010/pkg v0.0.0-20211125152609-e56bc2d152d0
 )
