@@ -27,11 +27,11 @@ import (
 
 	"mosn.io/mosn/pkg/config/v2"
 	"mosn.io/mosn/pkg/protocol"
-	"mosn.io/mosn/pkg/protocol/http"
 	"mosn.io/mosn/pkg/trace"
 	"mosn.io/mosn/pkg/trace/sofa"
 	"mosn.io/mosn/pkg/trace/sofa/xprotocol"
 	"mosn.io/mosn/pkg/types"
+	"mosn.io/pkg/protocol/http"
 )
 
 func init() {

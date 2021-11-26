@@ -8,6 +8,8 @@ github.com/SkyAPM/go2sky v0.5.0 h1:9RDBQviaeazG7PJMLLnMcU4U++PORbqEls4ix4OEgQw=
 github.com/SkyAPM/go2sky v0.5.0/go.mod h1:TANzYw5EvIlTidGWvQxtvO87rM6C746HkM0xkWqnPQw=
 github.com/StackExchange/wmi v0.0.0-20190523213315-cbe66965904d h1:G0m3OIz70MZUWq3EgK3CesDbo8upS2Vm9/P3FtgI+Jk=
 github.com/StackExchange/wmi v0.0.0-20190523213315-cbe66965904d/go.mod h1:3eOhrUMpNV+6aFIbp5/iudMxNCF27Vw2OZgy4xEx0Fg=
+github.com/Tanc010/pkg v0.0.0-20211125152609-e56bc2d152d0 h1:GYasj17PZiOQDtySe1mdGgLCL9ilqNdX9lfeOgYfX8I=
+github.com/Tanc010/pkg v0.0.0-20211125152609-e56bc2d152d0/go.mod h1:YEv5sGe7kqo/Yzj7OJI7Udl3iUcagNeo5unGPiUaUfw=
 github.com/TarsCloud/TarsGo v1.1.4 h1:h8Hch0oWX4hahh/ZWD2gVdKq5KbkbaE5PO2nQtq/hGI=
 github.com/TarsCloud/TarsGo v1.1.4/go.mod h1:jkslu43B0kZitq9ztCH6ZM6l4rCKGkMjdqEPjHoOdjc=
 github.com/YIDWang/api v0.0.0-20211119033852-6e898f4d8222 h1:9y2qkr2ykzipMCUvS/OdscecVLra+ph+VxKv7+ymLts=
@@ -409,8 +411,6 @@ k8s.io/klog v0.0.0-20181102134211-b9b56d5dfc92/go.mod h1:Gq+BEi5rUBO/HRz0bTSXDUc
 k8s.io/klog v1.0.0 h1:Pt+yjF5aB1xDSVbau4VsWe+dQNzA0qv1LlXdC2dF6Q8=
 k8s.io/klog v1.0.0/go.mod h1:4Bi6QPql/J/LkTDqv7R/cd3hPo4k2DG6Ptcz060Ez5I=
 k8s.io/kube-openapi v0.0.0-20191107075043-30be4d16710a/go.mod h1:1TqjTSzOxsLGIKfj0lK8EeCP7K1iUG65v09OM0/WG5E=
-mosn.io/pkg v0.0.0-20210604065522-6e8f5a087814 h1:42A6tqajl/hGKkSVLa3mCnaQh8i568Zxgtx0ZECjCmw=
-mosn.io/pkg v0.0.0-20210604065522-6e8f5a087814/go.mod h1:YEv5sGe7kqo/Yzj7OJI7Udl3iUcagNeo5unGPiUaUfw=
 mosn.io/proxy-wasm-go-host v0.0.0-20210312032409-2334f9cf62ec h1:Q5OprvuVc7VNnI8Q+mUb3VsG9uxP/PcRn2KdeWmx8Mc=
 mosn.io/proxy-wasm-go-host v0.0.0-20210312032409-2334f9cf62ec/go.mod h1:wBRY9Xjf77GZhvAuEc6nQXZ6dQK39kNU2ok/+Z8mSU8=
 rsc.io/pdf v0.1.1/go.mod h1:n8OzWcQ6Sp37PL01nO98y4iUCRdTGarVfzxY20ICaU4=

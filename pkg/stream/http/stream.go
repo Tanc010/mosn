@@ -39,11 +39,11 @@ import (
 	mosnctx "mosn.io/mosn/pkg/context"
 	"mosn.io/mosn/pkg/log"
 	"mosn.io/mosn/pkg/protocol"
-	mosnhttp "mosn.io/mosn/pkg/protocol/http"
 	str "mosn.io/mosn/pkg/stream"
 	"mosn.io/mosn/pkg/trace"
 	"mosn.io/mosn/pkg/types"
 	"mosn.io/pkg/buffer"
+	mosnhttp "mosn.io/pkg/protocol/http"
 	"mosn.io/pkg/utils"
 )
 

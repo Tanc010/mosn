@@ -55,10 +55,12 @@ require (
 	istio.io/api v0.0.0-20200227213531-891bf31f3c32
 	k8s.io/klog v1.0.0
 	mosn.io/api v0.0.0-20210414070543-8a0686b03540
-	mosn.io/pkg v0.0.0-20210604065522-6e8f5a087814
+	mosn.io/pkg v0.0.0-20211125152609-e56bc2d152d0
 	mosn.io/proxy-wasm-go-host v0.0.0-20210312032409-2334f9cf62ec
 )
 
-replace github.com/envoyproxy/go-control-plane => github.com/envoyproxy/go-control-plane v0.9.4
-
-replace mosn.io/api => github.com/YIDWang/api v0.0.0-20211119033852-6e898f4d8222
+replace (
+	github.com/envoyproxy/go-control-plane => github.com/envoyproxy/go-control-plane v0.9.4
+	mosn.io/api => github.com/YIDWang/api v0.0.0-20211119033852-6e898f4d8222
+	mosn.io/pkg => github.com/Tanc010/pkg v0.0.0-20211125152609-e56bc2d152d0
+)

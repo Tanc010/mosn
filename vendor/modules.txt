@@ -478,11 +478,13 @@ k8s.io/klog
 ## explicit
 mosn.io/api
 mosn.io/api/extensions/transcoder
-# mosn.io/pkg v0.0.0-20210604065522-6e8f5a087814
+# mosn.io/pkg v0.0.0-20211125152609-e56bc2d152d0 => github.com/Tanc010/pkg v0.0.0-20211125152609-e56bc2d152d0
 ## explicit
 mosn.io/pkg/buffer
 mosn.io/pkg/header
 mosn.io/pkg/log
+mosn.io/pkg/protocol/http
+mosn.io/pkg/types
 mosn.io/pkg/utils
 # mosn.io/proxy-wasm-go-host v0.0.0-20210312032409-2334f9cf62ec
 ## explicit
@@ -490,3 +492,4 @@ mosn.io/proxy-wasm-go-host/common
 mosn.io/proxy-wasm-go-host/proxywasm
 # github.com/envoyproxy/go-control-plane => github.com/envoyproxy/go-control-plane v0.9.4
 # mosn.io/api => github.com/YIDWang/api v0.0.0-20211119033852-6e898f4d8222
+# mosn.io/pkg => github.com/Tanc010/pkg v0.0.0-20211125152609-e56bc2d152d0
