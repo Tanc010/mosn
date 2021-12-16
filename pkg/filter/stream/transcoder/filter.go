@@ -24,7 +24,7 @@ import (
 	"mosn.io/api"
 	"mosn.io/api/extensions/transcoder"
 
-	"mosn.io/mosn/pkg/config/v2"
+	v2 "mosn.io/mosn/pkg/config/v2"
 	mosnctx "mosn.io/mosn/pkg/context"
 	"mosn.io/mosn/pkg/filter/stream/transcoder/matcher"
 	"mosn.io/mosn/pkg/log"
@@ -82,11 +82,18 @@ func (f *transcodeFilter) OnReceive(ctx context.Context, headers types.HeaderMap
 	srcPro := mosnctx.Get(ctx, types.ContextKeyDownStreamProtocol).(api.ProtocolName)
 	dstPro := ruleInfo.UpstreamSubProtocol
 	//select transcoder
-	transcoder := GetTranscoder(ruleInfo.GetType(srcPro))
-	if transcoder == nil {
-		log.Proxy.Errorf(ctx, "[stream filter][transcoder] cloud not found transcoder")
+	transcoderFactory := GetTranscoderFactory(ruleInfo.GetType(srcPro))
+	if transcoderFactory == nil {
+		log.Proxy.Errorf(ctx, "[stream filter][transcoder] cloud not found transcoderFactory")
 		return api.StreamFilterContinue
 	}
+
+	transcoder := transcoderFactory(ruleInfo.Config)
+	if transcoder == nil {
+		log.Proxy.Errorf(ctx, "[stream filter][transcoder] create transcoder failed")
+		return api.StreamFilterContinue
+	}
+
 	// check accept
 	if !transcoder.Accept(ctx, headers, buf, trailers) {
 		return api.StreamFilterContinue
@@ -114,7 +121,6 @@ func (f *transcodeFilter) OnReceive(ctx context.Context, headers types.HeaderMap
 	f.receiveHandler.SetRequestHeaders(outHeaders)
 	f.receiveHandler.SetRequestData(outBuf)
 	f.receiveHandler.SetRequestTrailers(outTrailers)
-	f.receiveHandler.SetConvert(false)
 
 	return api.StreamFilterContinue
 }
@@ -146,6 +152,7 @@ func (f *transcodeFilter) Append(ctx context.Context, headers types.HeaderMap, b
 		log.Proxy.Errorf(ctx, "[stream filter][transcoder] transcoder response failed: %v", err)
 		f.receiveHandler.RequestInfo().SetResponseFlag(RequestTranscodeFail)
 		f.receiveHandler.SendHijackReply(http.StatusInternalServerError, headers)
+		f.needTranscode = false // send hijack should not transcode now.
 		return api.StreamFilterStop
 	}
 	f.sendHandler.SetResponseHeaders(outHeaders)
